@@ -1,0 +1,17 @@
+# Ignore system files
+.DS_Store        # macOS (можно оставить, если репозиторий будет доступен на разных ОС)
+*.swp            # Vim swap files
+*.bak            # Backup files
+*.tmp            # Temporary files
+
+# Ignore logs and temporary files
+*.log            # Log files
+*.out            # Output files
+*.o              # Object files
+
+# Ignore personal configuration files
+*.env            # Environment configuration files
+
+# Ignore compiled bash files
+*.sh~
+
