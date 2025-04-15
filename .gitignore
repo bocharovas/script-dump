@@ -15,3 +15,6 @@
 # Ignore compiled bash files
 *.sh~
 
+# ==== Lua ====
+*.luac           # Compiled Lua bytecode
+

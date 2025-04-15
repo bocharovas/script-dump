@@ -1,10 +1,10 @@
 # script-dump
 
-A personal collection of Bash scripts for automation, learning, and everyday tasks.
+A personal collection of Bash and Lua scripts for automation, learning, and everyday tasks.
 
 ## 📁 About
 
-This repository contains various Bash scripts written to automate common tasks, simplify workflows, and experiment with shell scripting.
+This repository contains various scripts written to automate common tasks, simplify workflows, and experiment with shell scripting and Lua scripting.
 
 Scripts may include:
 - File and system operations
@@ -14,7 +14,7 @@ Scripts may include:
 
 ## 🛠️ Technologies
 
-- **Language**: Bash  
+- **Languages**: Bash 🐚, Lua 🐉  
 - **Platform**: Unix/Linux
 
 ## ⚠️ Disclaimer
