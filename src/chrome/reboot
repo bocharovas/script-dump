@@ -32,4 +32,3 @@ for ((i=1; i<=TIMEOUT; i++)); do
 done
 echo "Chrome не завершён за $TIMEOUT секунд. Прерывание выключения."
 exit 1
-

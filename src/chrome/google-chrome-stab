@@ -8,4 +8,3 @@ env LANG=de_DE.UTF-8 /usr/bin/google-chrome-stable \
   --disable-session-crashed-bubble \
   --restore-last-session=false \
  https://chatgpt.com/
-
