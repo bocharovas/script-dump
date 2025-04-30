@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Жестко заданный таймаут ожидания завершения Chrome (в секундах)
 TIMEOUT=10
@@ -16,10 +16,12 @@ echo "Найдены процессы Chrome (PID: $pids)"
 echo "Попытка корректного завершения (SIGTERM)..."
 
 # Отправляем сигнал SIGTERM
-kill -SIGTERM $pids
+kill -15 $pids
+
+i=1
 
 # Ждём завершения, максимум TIMEOUT секунд
-for ((i=1; i<=TIMEOUT; i++)); do
+while [ $i -le $TIMEOUT ]; do
     sleep 1
     pids_left=$(pgrep chrome)
     if [ -z "$pids_left" ]; then
@@ -29,6 +31,7 @@ for ((i=1; i<=TIMEOUT; i++)); do
         exit 0
     fi
     echo "Ожидание завершения... ($i сек)"
+    i=$((i+1))
 done
 echo "Chrome не завершён за $TIMEOUT секунд. Прерывание выключения."
 exit 1

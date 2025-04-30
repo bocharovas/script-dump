@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 rm -rf ~/.config/google-chrome/Default/Sessions
 
