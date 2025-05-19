@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Google Chrome Custom
+Exec=/home/neueuser/projects/script-dump/src/chrome/google-chrome-stab.sh
+Terminal=false
+
