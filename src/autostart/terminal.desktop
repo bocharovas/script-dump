@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=terminal
+Comment=terminal
+TryExec=/usr/bin/xfce4-terminal
+Exec=/usr/bin/xfce4-terminal --maximize
+Icon=
+Terminal=false
+StartupWMClass=
+Type=Application
+Categories=
+MimeType=
+Keywords=
+Actions=
+SingleMainWindow=
+X-GNOME-UsesNotifications=
+X-GNOME-SingleWindow=
+Hidden=false
+NoDisplay=false
+
+

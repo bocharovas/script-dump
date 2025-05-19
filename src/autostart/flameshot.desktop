@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=flameshot
+Comment=
+TryExec=/usr/bin/flameshot
+Exec=/usr/bin/flameshot
+Icon=
+Terminal=false
+StartupWMClass=
+Type=Application
+Categories=
+MimeType=
+Keywords=
+Actions=
+SingleMainWindow=
+X-GNOME-UsesNotifications=
+X-GNOME-SingleWindow=
+Hidden=false
+NoDisplay=false
+
+

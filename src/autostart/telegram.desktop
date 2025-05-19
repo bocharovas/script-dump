@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Telegram
+Comment=
+TryExec=/usr/bin/telegram-desktop
+Exec=/usr/bin/telegram-desktop
+Icon=
+Terminal=false
+StartupWMClass=
+Type=Application
+Categories=
+MimeType=
+Keywords=
+Actions=
+SingleMainWindow=
+X-GNOME-UsesNotifications=
+X-GNOME-SingleWindow=
+
