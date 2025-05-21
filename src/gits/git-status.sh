@@ -1,21 +1,25 @@
 #!/bin/sh
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+CYAN='\033[0;36m'
+RESET='\033[0m'
+
 REPO_COUNT=0
 
 for dir in "$HOME"/* "$HOME/projects"/*; do
+    [ -d "$dir" ] || continue
+
     if [ -d "$dir/.git" ]; then
         CHANGES=$(git --git-dir="$dir/.git" --work-tree="$dir" status --porcelain)
         NAME=$(basename "$dir")
         BRANCH=$(git --git-dir="$dir/.git" --work-tree="$dir" rev-parse --abbrev-ref HEAD)
 
-        # Проверяем upstream ветку
         upstream=$(git --git-dir="$dir/.git" --work-tree="$dir" rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2>/dev/null)
-
-        # По умолчанию статус трекинга пуст
-        TRACKING_STATUS="(no upstream)"
+        TRACKING_STATUS="${YELLOW}(no upstream)${RESET}"
 
         if [ -n "$upstream" ]; then
-            # Обновим инфо с удалённого, чтобы было актуально (тихо)
             git --git-dir="$dir/.git" --work-tree="$dir" fetch --quiet
 
             counts=$(git --git-dir="$dir/.git" --work-tree="$dir" rev-list --left-right --count HEAD..."$upstream")
@@ -23,15 +27,28 @@ for dir in "$HOME"/* "$HOME/projects"/*; do
             behind=$(echo "$counts" | cut -f2)
 
             if [ "$ahead" -eq 0 ] && [ "$behind" -eq 0 ]; then
-                TRACKING_STATUS="up to date with $upstream"
+                TRACKING_STATUS="${GREEN}up to date with $upstream${RESET}"
             elif [ "$ahead" -gt 0 ] && [ "$behind" -eq 0 ]; then
-                TRACKING_STATUS="ahead of $upstream by $ahead commit(s)"
+                TRACKING_STATUS="${CYAN}ahead of $upstream by $ahead commit(s)${RESET}"
             elif [ "$ahead" -eq 0 ] && [ "$behind" -gt 0 ]; then
-                TRACKING_STATUS="behind $upstream by $behind commit(s)"
+                TRACKING_STATUS="${RED}behind $upstream by $behind commit(s)${RESET}"
             else
-                TRACKING_STATUS="diverged from $upstream (ahead $ahead, behind $behind)"
+                TRACKING_STATUS="${RED}diverged from $upstream (ahead $ahead, behind $behind)${RESET}"
             fi
         fi
+
+	if command -v gh >/dev/null 2>&1; then
+	    PR_LIST=$(cd "$dir" && gh pr list --json title,url --jq '.[] | "- \(.title) [\(.url)]"' 2>/dev/null)
+
+            if [ -n "$PR_LIST" ]; then
+                PR_STATUS="${GREEN}Open PRs:${RESET}\n$PR_LIST"
+            else
+                PR_STATUS="${YELLOW}No open PRs${RESET}"
+            fi
+        else
+            PR_STATUS="${CYAN}(gh not installed)${RESET}"
+        fi
+
 
         if echo "$dir" | grep -q "^$HOME/projects"; then
             PREFIX=">>>"
@@ -43,12 +60,12 @@ for dir in "$HOME"/* "$HOME/projects"/*; do
 
         REPO_COUNT=$((REPO_COUNT + 1))
 
-        echo "$PREFIX $NAME [$BRANCH] — $TRACKING_STATUS $SUFFIX"
+        echo "$PREFIX $NAME [$BRANCH] — $TRACKING_STATUS $SUFFIX — $PR_STATUS"
 
         if [ -n "$CHANGES" ]; then
             echo "$CHANGES"
         else
-            echo "No changes"
+            echo "${YELLOW}No changes${RESET}"
         fi
 
         echo
@@ -56,3 +73,10 @@ for dir in "$HOME"/* "$HOME/projects"/*; do
 done
 
 echo "Total repositories: $REPO_COUNT"
+
+if command -v gh >/dev/null 2>&1; then
+    REMOTE_COUNT=$(gh repo list --limit 1000 --json name --jq 'length' 2>/dev/null)
+    echo "${GREEN}Total remote repositories: $REMOTE_COUNT${RESET}"
+else
+    echo "${RED}GitHub CLI (gh) not installed — cannot list remote repositories.${RESET}"
+fi
