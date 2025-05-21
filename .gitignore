@@ -1,22 +1,21 @@
 /node_modules/
 
 # Ignore system files
-.DS_Store        # macOS (можно оставить, если репозиторий будет доступен на разных ОС)
-*.swp            # Vim swap files
-*.bak            # Backup files
-*.tmp            # Temporary files
+.DS_Store
+*.swp
+*.bak
+*.tmp
 
 # Ignore logs and temporary files
-*.log            # Log files
-*.out            # Output files
-*.o              # Object files
+*.log
+*.out
+*.o
 
 # Ignore personal configuration files
-*.env            # Environment configuration files
+*.env
 
 # Ignore compiled bash files
 *.sh~
 
 # ==== Lua ====
-*.luac           # Compiled Lua bytecode
-
+*.luac
