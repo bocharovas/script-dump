@@ -1,0 +1,1 @@
+neueuser debhostname = (root) NOPASSWD: /sbin/shutdown -h now, /sbin/shutdown -r now
