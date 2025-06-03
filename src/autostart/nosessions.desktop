@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Clear XFCE Sessions
+Exec= sh -c '$HOME/bin/nosessions.sh'
