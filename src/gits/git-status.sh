@@ -44,8 +44,8 @@ for dir in "$HOME"/* "$HOME/projects"/*; do
   if command -v gh >/dev/null 2>&1; then
     pr_list=$(cd "$dir" && gh pr list --json title,url --jq '.[] | "- \(.title) [\(.url)]"' 2>/dev/null)
 
-    if [ -n "$PR_LIST" ]; then
-      pr_status="${GREEN}open pr:${RESET}\n$PR_LIST"
+    if [ -n "$pr_list" ]; then
+      pr_status="${GREEN}open pr:${RESET}\n$pr_list"
     else
       pr_status="${YELLOW}no open pr${RESET}"
     fi
