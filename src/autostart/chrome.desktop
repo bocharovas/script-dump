@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=Google Chrome Custom
-Exec= sh -c '$HOME/bin/chrome/google-chrome-stab.sh
+Exec= sh -c '$HOME/bin/google-chrome-stab'
 Terminal=false
 

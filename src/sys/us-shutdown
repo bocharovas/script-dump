@@ -1,1 +1,2 @@
-neueuser debhostname = (root) NOPASSWD: /sbin/shutdown -h now, /sbin/shutdown -r now
+user host = (root) NOPASSWD: /sbin/shutdown -h now, /sbin/shutdown -r now, /home/neueuser/bin/sd-backup, /home/neueuser/bin/rpi-backup
+
