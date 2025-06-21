@@ -45,7 +45,12 @@ for dir in "$HOME"/* "$HOME/projects"/*; do
     pr_list=$(cd "$dir" && gh pr list --json title,url --jq '.[] | "- \(.title) [\(.url)]"' 2>/dev/null)
 
     if [ -n "$pr_list" ]; then
-      pr_status="${GREEN}open pr:${RESET}\n$pr_list"
+      if [ "$dir" != "$(readlink -f "$HOME/projects/neovim")" ]; then
+        pr_status="${GREEN}open pr:${RESET}\n$pr_list"
+      else  
+        pr_count=$(echo "$pr_list" | wc -l)
+        pr_status="${MAGENTA}open pr: $pr_count${RESET}"
+      fi  
     else
       pr_status="${YELLOW}no open pr${RESET}"
     fi

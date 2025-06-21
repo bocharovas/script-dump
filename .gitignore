@@ -1,5 +1,7 @@
 /node_modules/
 
+/src/pic/fan_frames
+
 # Ignore system files
 .DS_Store
 *.swp
@@ -19,3 +21,4 @@
 
 # ==== Lua ====
 *.luac
+
