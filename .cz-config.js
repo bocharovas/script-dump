@@ -1,4 +1,6 @@
 module.exports = {
+  disableEmoji: true,
+
   types: [
     { value: 'test',     name: 'test:     Adding missing tests 💍' },
     { value: 'feat',     name: 'feat:     A new feature 🎸' },
@@ -12,7 +14,7 @@ module.exports = {
     { value: 'release',  name: 'release:  Create a release commit 🏹' }
   ],
 
-  scopes: ['src', 'git-status', 'sys', 'autostart', 'root', 'pic', 'commitizen'],
+  scopes: ['src', 'git-status', 'sys', 'autostart', 'root', 'pic', 'commitizen', 'scripts'],
 
   allowCustomScopes: true,
 
