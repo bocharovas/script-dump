@@ -6,7 +6,7 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
 rm -rf ~/.config/google-chrome/Default/Sessions
 
-sleep 30   
+sleep 180   
 
 env LANG=de_DE.UTF-8 /usr/bin/google-chrome-stable \
   --new-window \
@@ -14,3 +14,4 @@ env LANG=de_DE.UTF-8 /usr/bin/google-chrome-stable \
   --disable-session-crashed-bubble \
   --restore-last-session=false \
  https://chatgpt.com/
+
