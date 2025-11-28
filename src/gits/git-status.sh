@@ -14,6 +14,10 @@ for dir in "$HOME"/* "$HOME/projects"/*; do
   [ -d "$dir" ] || continue
   [ "$dir" = "$HOME/projects/modbus-dotnet" ] && continue
 
+  case "$(basename "$dir")" in
+    *old*) continue ;;
+  esac
+
   if [ -d "$dir/.git" ]; then
     changes=$(git --git-dir="$dir/.git" --work-tree="$dir" status --porcelain)
     name=$(basename "$dir")
