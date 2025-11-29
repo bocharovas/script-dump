@@ -1,4 +1,6 @@
-{
+{   "scripts": {
+          "comm": "pnpm exec git-cz"
+    },
 	"config": {
 		"commitizen": {
 			"path": "cz-customizable"
