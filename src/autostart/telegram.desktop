@@ -1,8 +1,7 @@
 [Desktop Entry]
 Name=Telegram
 Comment=
-TryExec=/usr/bin/telegram-desktop
-Exec=/usr/bin/telegram-desktop
+Exec=/opt/telegram/Telegram/Telegram
 Icon=
 Terminal=false
 StartupWMClass=
